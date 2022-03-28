@@ -4,7 +4,8 @@
         <p> {{ employee.email }} </p>
         <p> {{ employee.adress }} </p>
         <p> {{ employee.arrival }} </p>
-        <Actions />
+        <Actions @upd-employee="$emit('upd-employee', this.employee)"
+            @delete-employee="$emit('delete-employe', this.employee.id)" />
     </div>    
 </template>
 
