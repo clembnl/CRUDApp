@@ -6,8 +6,8 @@
         <p>Arrival</p>
     </div>
     <div :key="employee.id" v-for="employee in employees">
-        <Task @update-employee="$emit('update-employee', employee)"
-        @delete-employee="$emit('delete-task', task.id)" 
+        <Task @upd-employee="$emit('upd-form', employee)"
+        @delete-employee="$emit('delete-employee', task.id)" 
         :employee="employee" />
     </div>    
 </template>
@@ -23,7 +23,7 @@ export default {
     props: {
         employees: Array
     },
-    emits: ['update-employee', 'delete-task']
+    emits: ['update-employee', 'delete-employee']
     
 }
 </script>
