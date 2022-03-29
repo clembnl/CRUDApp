@@ -1,6 +1,6 @@
 package com.crudapp.api.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -18,12 +18,12 @@ public class Employee {
 	private String email;
 	
 	private String adress;
-	private LocalDateTime arrival;
+	private LocalDate arrival;
 	
 	public Employee() {
 	}
 	
-	public Employee(String name, String email, String adress, LocalDateTime arrival) {
+	public Employee(String name, String email, String adress, LocalDate arrival) {
 		this.name = name;
 		this.email = email;
 		this.adress = adress;
@@ -62,11 +62,11 @@ public class Employee {
 		this.adress = adress;
 	}
 
-	public LocalDateTime getArrival() {
+	public LocalDate getArrival() {
 		return arrival;
 	}
 
-	public void setArrival(LocalDateTime arrival) {
+	public void setArrival(LocalDate arrival) {
 		this.arrival = arrival;
 	}
 

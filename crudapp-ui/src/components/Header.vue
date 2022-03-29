@@ -1,13 +1,17 @@
 <template>
     <header>
         <h1>Manage Employees</h1>
-        <button @click="onClick" >Add New Employee</button>
+        <button @click="onClick" :style="{ background: color }">{{ text }}</button>
     </header>
 </template>
 
 <script>
 export default {
     name: 'Header',
+    props: {
+        text: String,
+        color: String,
+    },
     methods: {
         onClick(e) {
             e.preventDefault()
@@ -30,7 +34,9 @@ h1 {
 }
 
 button {
+    /*
     background-color: rgb(34, 204, 28);
+    */
     color: white;
     border: none;
     padding: 3px;
