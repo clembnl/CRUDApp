@@ -1,7 +1,7 @@
 <template>
     <div class="actions">
-        <img @click="updateAction" src="" alt="" />
-        <img @click="deleteAction" src="" alt="" />
+        <img @click="updateAction" src="../assets/edit_icon.svg" alt="edit icon" />
+        <img @click="deleteAction" src="../assets/delete_icon.svg" alt="delete icon" />
     </div>
 </template>
 
@@ -26,5 +26,9 @@ export default {
 <style scoped>
 .actions {
     display: flex;
+}
+
+img {
+    width: 24px;
 }
 </style>

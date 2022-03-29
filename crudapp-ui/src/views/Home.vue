@@ -5,7 +5,7 @@
   <Employees v-show="showEmployees" 
     :employees="employees" 
     @delete-employee="deleteEmployee" 
-    @upd-form="toggleUpdForm" />      
+    @upd-form="toggleUpdForm" />     
   <AddForm v-show="showAddForm" 
     @add-employee="addEmployee" />
   <UpdateForm v-show="showUpdateForm" 
@@ -52,19 +52,20 @@ export default {
     async fetchEmployees() {
       await axios
         .get('api/employees/')
-        .then(() => {
-          return res.json()
+        .then(response => {
+          this.employees = response.data
         })
         .catch((err) => console.log("err", err));
     },
+    /*
     async fetchEmployee(id) {
       await axios
         .get(`api/employees/${id}`)
         .then(() => {
-          return res.json()
         })
         .catch((err) => console.log("err", err));
     },
+    */
     async addEmployee(employee) {
       await axios
         .post('api/employees/new', employee)
@@ -81,7 +82,7 @@ export default {
     },
     async updateEmployee(updemployee) {
       await axios
-        .put('api/employees/add', updemployee)
+        .put(`api/employees/update/${updemployee.id}`, updemployee)
         .then(() => {
           this.employees = this.employees.map((employee) => this.employee.id === updemployee.id)
           this.showUpdateForm = false
@@ -93,7 +94,7 @@ export default {
         })
         .catch((err) => console.log("err", err));
     },    
-    async deleteTask(id) {
+    async deleteEmployee(id) {
       if (confirm('Are you sure')) {
         await axios
           .delete(`api/employees/delete/${id}`)
@@ -111,7 +112,7 @@ export default {
     },    
   },
   async created() {
-    this.employees = await this.fetchEmployees()
+    this.fetchEmployees()
   },
 }
 </script>
