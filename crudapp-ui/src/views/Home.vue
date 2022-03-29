@@ -1,16 +1,16 @@
 <template>
-  <Header @addEmployee="toggleAddForm" />
+  <Header @addEmployee="toggleAddForm" 
+    :text="showAddForm ? 'Close' : 'Add Employee'" 
+    :color="showAddForm ? 'red' : 'green'" />
   <Employees v-show="showEmployees" 
     :employees="employees" 
     @delete-employee="deleteEmployee" 
     @upd-form="toggleUpdForm" />      
   <AddForm v-show="showAddForm" 
     @add-employee="addEmployee" />
-  <!--
   <UpdateForm v-show="showUpdateForm" 
     :employee="employee" 
     @upd-employee="updateEmployee" />
-  -->
 </template>
 
 <script>
@@ -40,9 +40,9 @@ export default {
   },
   methods: {
     toggleAddForm() {
-      this.showAddForm = true
+      this.showAddForm = !this.showAddForm
       this.showUpdateForm = false
-      this.showEmployees = false
+      this.showEmployees = !this.showEmployees
     },
     toggleUpdForm() {
       this.showAddForm = false
@@ -67,7 +67,7 @@ export default {
     },
     async addEmployee(employee) {
       await axios
-        .post('api/employees/add', employee)
+        .post('api/employees/new', employee)
         .then(() => {
           this.showAddForm = false
           this.showEmployees = true          

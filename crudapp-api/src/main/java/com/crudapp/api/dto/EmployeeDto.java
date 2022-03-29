@@ -1,18 +1,18 @@
 package com.crudapp.api.dto;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class EmployeeDto {
 	
 	private String name;
 	private String email;
 	private String adress;
-	private LocalDateTime arrival;
+	private LocalDate arrival;
 	
 	public EmployeeDto() {
 	}
 	
-	public EmployeeDto(String name, String email, String adress, LocalDateTime arrival) {
+	public EmployeeDto(String name, String email, String adress, LocalDate arrival) {
 		this.name = name;
 		this.email = email;
 		this.adress = adress;
@@ -43,11 +43,11 @@ public class EmployeeDto {
 		this.adress = adress;
 	}
 
-	public LocalDateTime getArrival() {
+	public LocalDate getArrival() {
 		return arrival;
 	}
 
-	public void setArrival(LocalDateTime arrival) {
+	public void setArrival(LocalDate arrival) {
 		this.arrival = arrival;
 	}	
 

@@ -6,7 +6,7 @@
         <p>Arrival</p>
     </div>
     <div :key="employee.id" v-for="employee in employees">
-        <Task @upd-employee="$emit('upd-form', employee)"
+        <Employee @upd-employee="$emit('upd-form', employee)"
         @delete-employee="$emit('delete-employee', task.id)" 
         :employee="employee" />
     </div>    
