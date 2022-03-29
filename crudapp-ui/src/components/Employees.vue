@@ -1,15 +1,18 @@
 <template>
-    <div id="head">
-        <p>Name</p>
-        <p>Email</p>
-        <p>Adress</p>
-        <p>Arrival</p>
+    <div id="employees">
+        <div id="head">
+            <p>Name</p>
+            <p>Email</p>
+            <p>Adress</p>
+            <p>Arrival</p>
+            <p>Actions</p>
+        </div>
+        <div :key="employee.id" v-for="employee in employees">
+            <Employee @upd-employee="$emit('upd-form', employee)"
+            @delete-employee="$emit('delete-employee', employee.id)" 
+            :employee="employee" />
+        </div>    
     </div>
-    <div :key="employee.id" v-for="employee in employees">
-        <Employee @upd-employee="$emit('upd-form', employee)"
-        @delete-employee="$emit('delete-employee', task.id)" 
-        :employee="employee" />
-    </div>    
 </template>
 
 <script>
