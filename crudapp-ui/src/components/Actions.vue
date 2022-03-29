@@ -1,7 +1,7 @@
 <template>
     <div class="actions">
-        <img @click="updateAction" />
-        <img @click="deleteAction" />
+        <img @click="updateAction" src="" alt="" />
+        <img @click="deleteAction" src="" alt="" />
     </div>
 </template>
 

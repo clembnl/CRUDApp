@@ -1,14 +1,16 @@
 <template>
-  <Header @addEmployee="showAddForm" />
-  <Employees :showEmployees="showEmployees" 
+  <Header @addEmployee="toggleAddForm" />
+  <Employees v-show="showEmployees" 
     :employees="employees" 
     @delete-employee="deleteEmployee" 
-    @upd-form="showUpdForm" />
-  <AddForm :showAddForm="showAddForm" 
+    @upd-form="toggleUpdForm" />      
+  <AddForm v-show="showAddForm" 
     @add-employee="addEmployee" />
-  <UpdateForm :showUpdateForm="showUpdateForm" 
+  <!--
+  <UpdateForm v-show="showUpdateForm" 
     :employee="employee" 
     @upd-employee="updateEmployee" />
+  -->
 </template>
 
 <script>
@@ -29,11 +31,24 @@ export default {
   },
   data() {
     return {
-      employees = [],
-      employee = null,
+      employees: [],
+      employee: null,
+      showAddForm: false,
+      showEmployees: true,
+      showUpdateForm: false,
     }
   },
   methods: {
+    toggleAddForm() {
+      this.showAddForm = true
+      this.showUpdateForm = false
+      this.showEmployees = false
+    },
+    toggleUpdForm() {
+      this.showAddForm = false
+      this.showUpdateForm = true
+      this.showEmployees = false
+    },
     async fetchEmployees() {
       await axios
         .get('api/employees/')
@@ -54,6 +69,8 @@ export default {
       await axios
         .post('api/employees/add', employee)
         .then(() => {
+          this.showAddForm = false
+          this.showEmployees = true          
           this.employees = [...this.employees, employee]
           swal({
             text: "Employee added successfully",
@@ -66,7 +83,9 @@ export default {
       await axios
         .put('api/employees/add', updemployee)
         .then(() => {
-          this.employees = this.employees.map((employee) => employee.id === updemployee.id)
+          this.employees = this.employees.map((employee) => this.employee.id === updemployee.id)
+          this.showUpdateForm = false
+          this.showEmployees = true        
           swal({
             text: "Employee added successfully",
             icon: "success",
@@ -90,6 +109,9 @@ export default {
           .catch((err) => console.log("err", err));
       }
     },    
-  }
+  },
+  async created() {
+    this.employees = await this.fetchEmployees()
+  },
 }
 </script>

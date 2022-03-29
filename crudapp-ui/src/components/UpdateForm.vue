@@ -6,7 +6,7 @@
     </div>
     <div class="form-control">
       <label>Email</label>
-      <input type="email" v-model="email" name="email" placeholder= {{employee.email }} />
+      <input type="email" v-model="email" name="email" placeholder= {{ employee.email }} />
     </div>
     <div class="form-control">
       <label>Adress</label>
@@ -15,7 +15,7 @@
     <div class="form-control">
       <label>Arrival</label>
       <input
-        type="date" v-model="arrival" name="arrival" placeholder= {{employee.arrival}} />
+        type="date" v-model="arrival" name="arrival" placeholder= {{ employee.arrival}} />
     </div>
 
     <input type="submit" value="Update Employee" class="btn" />
