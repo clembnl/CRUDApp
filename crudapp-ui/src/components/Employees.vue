@@ -1,5 +1,5 @@
 <template>
-    <div id="employees">
+    <div id="items">
         <div id="head">
             <p>Name</p>
             <p>Email</p>
@@ -8,7 +8,7 @@
             <p>Actions</p>
         </div>
         <div :key="employee.id" v-for="employee in employees">
-            <Employee @upd-employee="$emit('upd-form', employee)"
+            <Employee @upd-employee="$emit('upd-form', employee.id)"
             @delete-employee="$emit('delete-employee', employee.id)" 
             :employee="employee" />
         </div>    
@@ -25,9 +25,7 @@ export default {
     },
     props: {
         employees: Array
-    },
-    emits: ['update-employee', 'delete-employee']
-    
+    },    
 }
 </script>
 

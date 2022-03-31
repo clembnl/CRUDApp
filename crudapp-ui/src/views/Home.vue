@@ -8,7 +8,7 @@
     @upd-form="toggleUpdForm" />     
   <AddForm v-show="showAddForm" 
     @add-employee="addEmployee" />
-  <UpdateForm v-show="showUpdateForm" 
+  <UpdateForm v-if="showUpdateForm" 
     :employee="employee" 
     @upd-employee="updateEmployee" />
 </template>
@@ -32,7 +32,13 @@ export default {
   data() {
     return {
       employees: [],
-      employee: null,
+      employee: {
+        id: '',
+        name: '',
+        email: '',
+        adress: '',
+        arrival: ''
+      },
       showAddForm: false,
       showEmployees: true,
       showUpdateForm: false,
@@ -44,7 +50,8 @@ export default {
       this.showUpdateForm = false
       this.showEmployees = !this.showEmployees
     },
-    toggleUpdForm() {
+    toggleUpdForm(id) {
+      this.employee = this.employees.filter((employee) => employee.id === id)[0]
       this.showAddForm = false
       this.showUpdateForm = true
       this.showEmployees = false
@@ -57,53 +64,57 @@ export default {
         })
         .catch((err) => console.log("err", err));
     },
-    /*
-    async fetchEmployee(id) {
-      await axios
-        .get(`api/employees/${id}`)
-        .then(() => {
-        })
-        .catch((err) => console.log("err", err));
-    },
-    */
     async addEmployee(employee) {
       await axios
         .post('api/employees/new', employee)
         .then(() => {
           this.showAddForm = false
           this.showEmployees = true          
-          this.employees = [...this.employees, employee]
+          this.fetchEmployees()
           swal({
             text: "Employee added successfully",
             icon: "success",
           });
         })
-        .catch((err) => console.log("err", err));
+        .catch((err) => {
+          swal({
+            text: "Verify employee information",
+            icon: "error",
+          });          
+          console.log("err", err)
+        });
     },
     async updateEmployee(updemployee) {
+      console.log(updemployee)
       await axios
         .put(`api/employees/update/${updemployee.id}`, updemployee)
         .then(() => {
-          this.employees = this.employees.map((employee) => this.employee.id === updemployee.id)
+          //this.employees = this.employees.map((employee) => this.employee.id === updemployee.id)
           this.showUpdateForm = false
           this.showEmployees = true        
           swal({
-            text: "Employee added successfully",
+            text: "Employee updated successfully",
             icon: "success",
           });
         })
-        .catch((err) => console.log("err", err));
+        .catch((err) => {
+          swal({
+            text: "Verify employee information",
+            icon: "error",
+          });          
+          console.log("err", err)
+        });
     },    
     async deleteEmployee(id) {
       if (confirm('Are you sure')) {
         await axios
           .delete(`api/employees/delete/${id}`)
-          .then(() => {
+          .then(res => {
             res.status === 200
             ? this.employees = this.employees.filter((employee) => employee.id !== id)
             : alert('Error deleting task')
             swal({
-              text: "Employee added successfully",
+              text: "Employee deleted successfully",
               icon: "success",
             });
           })

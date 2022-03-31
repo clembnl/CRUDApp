@@ -29,6 +29,14 @@ public class Employee {
 		this.adress = adress;
 		this.arrival = arrival;
 	}
+	
+	public Employee(String id, String name, String email, String adress, LocalDate arrival) {
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.adress = adress;
+		this.arrival = arrival;
+	}
 
 	public String getId() {
 		return id;
