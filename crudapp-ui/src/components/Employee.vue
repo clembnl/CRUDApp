@@ -31,9 +31,11 @@ export default {
     display: flex;
     justify-content: space-around;
 }
-/*
-#item :hover {
-    background-color: rgb(180, 180, 180);
+
+#item p {
+    padding: 10px;
+    margin: 0;
+    width: 20%;
+    text-align: center;
 }
-*/
 </style>

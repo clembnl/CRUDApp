@@ -89,7 +89,6 @@ export default {
       await axios
         .put(`api/employees/update/${updemployee.id}`, updemployee)
         .then(() => {
-          //this.employees = this.employees.map((employee) => this.employee.id === updemployee.id)
           this.showUpdateForm = false
           this.showEmployees = true        
           swal({
