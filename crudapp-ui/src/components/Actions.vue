@@ -26,6 +26,10 @@ export default {
 <style scoped>
 .actions {
     display: flex;
+    padding: 10px;
+    margin: 0;    
+    width: 20%;
+    justify-content: center;
 }
 
 img {

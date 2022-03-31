@@ -39,11 +39,13 @@ public class EmployeeService {
 	}
 	
 	public ResponseDto update(EmployeeDto employeeDto) throws CustomException {
-		if (!employeeRepository.findByEmail(employeeDto.getEmail()).isPresent()) {
+		if (!employeeRepository.findById(employeeDto.getId()).isPresent()) {
 			throw  new CustomException("employee not present");
 		}
 		
-		Employee uptEmployee = new Employee(employeeDto.getName(), employeeDto.getEmail(), employeeDto.getAdress(), employeeDto.getArrival());
+		Employee employee = employeeRepository.findById(employeeDto.getId()).get();
+		
+		Employee uptEmployee = new Employee(employee.getId(), employeeDto.getName(), employeeDto.getEmail(), employeeDto.getAdress(), employeeDto.getArrival());
 		try {
 			employeeRepository.save(uptEmployee);
 			return new ResponseDto(ResponseStatus.success.toString(), MessageStrings.EMPLOYEE_UPDATED);

@@ -24,21 +24,23 @@ export default {
 
 <style>
 header {
-    background-color: darkslateblue;
+    background-color: rgb(77, 84, 180);
     display: flex;
     justify-content: space-between;
+    font-family: "Rubik", sans-serif;
 }
 
 h1 {
     color: white;
+    padding-left: 15px;
 }
 
 button {
-    /*
-    background-color: rgb(34, 204, 28);
-    */
     color: white;
     border: none;
-    padding: 3px;
+    padding: 6px;
+    margin: 15px 10px 15px 10px;
+    border-radius: 1px;
+    width: 8%;
 }
 </style>

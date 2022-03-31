@@ -1,5 +1,5 @@
 <template>
-    <div id="employees">
+    <div id="items">
         <div id="head">
             <p>Name</p>
             <p>Email</p>
@@ -7,8 +7,8 @@
             <p>Arrival</p>
             <p>Actions</p>
         </div>
-        <div :key="employee.id" v-for="employee in employees">
-            <Employee @upd-employee="$emit('upd-form', employee)"
+        <div id="list" :key="employee.id" v-for="employee in employees">
+            <Employee @upd-employee="$emit('upd-form', employee.id)"
             @delete-employee="$emit('delete-employee', employee.id)" 
             :employee="employee" />
         </div>    
@@ -25,9 +25,7 @@ export default {
     },
     props: {
         employees: Array
-    },
-    emits: ['update-employee', 'delete-employee']
-    
+    },    
 }
 </script>
 
@@ -35,5 +33,24 @@ export default {
 #head {
     display: flex;
     justify-content: space-around;
+    border-bottom: solid 1px rgb(210,210,210);
+}
+
+#head p {
+    margin: 0;
+    padding: 10px;
+    width: 20%;
+    text-align: center;
+    font-weight: bold;
+}
+
+#items {
+    margin: 1%;
+    border-top: solid 1px rgb(210,210,210);
+    font-family: 'Poppins', sans-serif;
+}
+
+#items :hover {
+    background-color: rgb(210,210,210);
 }
 </style>

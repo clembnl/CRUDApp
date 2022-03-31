@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class EmployeeDto {
 	
+	private String id;
 	private String name;
 	private String email;
 	private String adress;
@@ -17,6 +18,22 @@ public class EmployeeDto {
 		this.email = email;
 		this.adress = adress;
 		this.arrival = arrival;
+	}
+	
+	public EmployeeDto(String id, String name, String email, String adress, LocalDate arrival) {
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.adress = adress;
+		this.arrival = arrival;
+	}
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getName() {

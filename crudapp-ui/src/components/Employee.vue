@@ -1,11 +1,11 @@
 <template>
-    <div id="employee">
+    <div id="item">
         <p> {{ employee.name }} </p>
         <p> {{ employee.email }} </p>
         <p> {{ employee.adress }} </p>
         <p> {{ employee.arrival }} </p>
-        <Actions @upd-employee="$emit('upd-employee', employee)"
-            @delete-employee="$emit('delete-employe', employee.id)" />
+        <Actions @upd-employee="$emit('upd-employee')"
+            @delete-employee="$emit('delete-employee')" />
     </div>    
 </template>
 
@@ -27,12 +27,15 @@ export default {
 </script>
 
 <style scoped>
-#employee {
+#item {
     display: flex;
     justify-content: space-around;
 }
 
-#employee :hover {
-    background-color: rgb(180, 180, 180);
+#item p {
+    padding: 10px;
+    margin: 0;
+    width: 20%;
+    text-align: center;
 }
 </style>
