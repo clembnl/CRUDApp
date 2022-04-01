@@ -39,7 +39,6 @@ export default {
 #head p {
     margin: 0;
     padding: 10px;
-    width: 20%;
     text-align: center;
     font-weight: bold;
 }
@@ -52,5 +51,17 @@ export default {
 
 #items :hover {
     background-color: rgb(210,210,210);
+}
+
+@media only screen and (max-width: 660px) {
+    #head {
+        flex-direction: column;
+        border: none;
+    }
+
+    #items {
+        display: flex;
+        border: none;
+    }
 }
 </style>

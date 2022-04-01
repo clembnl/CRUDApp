@@ -32,6 +32,7 @@ header {
 
 h1 {
     color: white;
+    width: 25%;
     padding-left: 15px;
 }
 
@@ -39,8 +40,10 @@ button {
     color: white;
     border: none;
     padding: 6px;
-    margin: 15px 10px 15px 10px;
+    margin-right: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
     border-radius: 1px;
-    width: 8%;
+    height: 45px;
 }
 </style>

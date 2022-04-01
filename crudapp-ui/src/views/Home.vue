@@ -46,9 +46,16 @@ export default {
   },
   methods: {
     toggleAddForm() {
-      this.showAddForm = !this.showAddForm
-      this.showUpdateForm = false
-      this.showEmployees = !this.showEmployees
+      if (!this.showUpdateForm) {
+        this.showAddForm = !this.showAddForm
+        this.showUpdateForm = false
+        this.showEmployees = !this.showEmployees        
+      }
+      else {
+        this.showAddForm = !this.showAddForm
+        this.showUpdateForm = false
+        this.showEmployees = false
+      }
     },
     toggleUpdForm(id) {
       this.employee = this.employees.filter((employee) => employee.id === id)[0]
