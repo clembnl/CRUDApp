@@ -5,7 +5,8 @@
         <p> {{ employee.adress }} </p>
         <p> {{ employee.arrival }} </p>
         <Actions @upd-employee="$emit('upd-employee')"
-            @delete-employee="$emit('delete-employee')" />
+            @delete-employee="$emit('delete-employee')" 
+            id="action" />
     </div>    
 </template>
 
@@ -35,7 +36,26 @@ export default {
 #item p {
     padding: 10px;
     margin: 0;
-    width: 20%;
     text-align: center;
+}
+
+@media only screen and (min-width: 660px) {
+    #item p {
+        width: 20%;
+    }
+}
+
+@media only screen and (max-width: 660px) {
+    #item {
+        flex-direction: column;
+    }
+
+    #item p {
+        margin: auto;
+    }
+
+    #action {
+        margin: auto;
+    }
 }
 </style>

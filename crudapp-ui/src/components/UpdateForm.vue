@@ -91,4 +91,19 @@ export default {
   color: white;
   font-weight: bold;
 }
+
+@media only screen and (max-width: 660px) {
+    .upd-form {
+      flex-direction: column;
+    }
+
+    .form-control input{
+      margin: 5px;
+    }
+
+    .btn {
+      margin-top: 5px;
+      width: 30%
+    }
+}
 </style>
